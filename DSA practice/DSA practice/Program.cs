@@ -477,7 +477,7 @@ using System.Threading.Tasks;
 }*/
 
 
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -507,5 +507,62 @@ namespace DSA_practice
     }
 
 
+}*/
+
+
+namespace DSA_practice
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            // Ask for size of array
+            Console.Write("Enter the number of elements (n): ");
+            int n = int.Parse(Console.ReadLine());
+
+            int[] arr = new int[n];
+
+            // Ask for array elements
+            Console.WriteLine($"Enter {n} integers (space or line separated):");
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write($"Element {i + 1}: ");
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+
+            // Create frequency hash (size 13)
+            int[] hash = new int[13];
+            for (int i = 0; i < n; i++)
+            {
+                hash[arr[i]]++;
+            }
+
+            // Ask for number of queries
+            Console.Write("Enter number of queries (q): ");
+            int q = int.Parse(Console.ReadLine());
+
+            // Answer each query
+            Console.WriteLine("Enter the numbers you want to check:");
+            for (int i = 0; i < q; i++)
+            {
+                Console.Write($"Query {i + 1} - Enter number: ");
+                int number = int.Parse(Console.ReadLine());
+
+                if (number >= 0 && number < hash.Length)
+                {
+                    Console.WriteLine($"The number {number} appears {hash[number]} time(s).");
+                }
+                else
+                {
+                    Console.WriteLine("Number out of range (0-12).");
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+
 }
+
 
