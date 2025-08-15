@@ -509,8 +509,8 @@ using System.Threading.Tasks;
 
 }*/
 
-
-namespace DSA_practice
+// integer array hashing
+/*namespace DSA_practice
 {
     using System;
 
@@ -558,6 +558,85 @@ namespace DSA_practice
                 {
                     Console.WriteLine("Number out of range (0-12).");
                 }
+            }
+            Console.ReadLine();
+        }
+    }
+
+}*/
+
+// character array hashing
+/*
+ namespace DSA_practice
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            char[] arr = { 'a', 'b', 'c', 'd', 'a', 'b', 'e', 'f', 'c' };
+
+            // Create frequency hash (size 26)
+            int[] hash = new int[26];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                hash[arr[i]-'a']++;
+            }
+
+            // Ask for number of queries
+            Console.Write("Enter number of queries (q): ");
+            int q = int.Parse(Console.ReadLine());
+
+            int count = 0;
+            while(q-->0)
+            {
+                count++;
+                Console.Write($"enter{count}st character:");
+                char c = char.Parse(Console.ReadLine());
+                Console.WriteLine(hash[c-'a']);
+            }
+            Console.ReadLine();
+        }
+    }
+
+}
+*/
+//integer array mapping
+namespace DSA_practice
+{
+    using System;
+
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = {1,2,3,1,2};
+            // Create frequency mapping
+            Dictionary<int, int> mpp = new Dictionary<int, int>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (mpp.ContainsKey(arr[i]))
+                    mpp[arr[i]]++;
+                else
+                    mpp[arr[i]] = 1;
+
+            }
+
+            // Ask for number of queries
+            Console.Write("Enter number of queries (q): ");
+            int q = int.Parse(Console.ReadLine());
+
+            int count = 0;
+            while (q-- > 0)
+            {
+                count++;
+                Console.Write($"enter {count}'st character:");
+                int c = int.Parse(Console.ReadLine());
+                if (mpp.ContainsKey(c))
+                    Console.WriteLine($"Frequency: {mpp[c]}");
+                else
+                    Console.WriteLine("Number not found in array.");
             }
             Console.ReadLine();
         }
