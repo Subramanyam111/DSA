@@ -569,7 +569,6 @@ using System.Threading.Tasks;
 /*
  namespace DSA_practice
 {
-    using System;
 
     class Program
     {
@@ -603,7 +602,7 @@ using System.Threading.Tasks;
 }
 */
 //integer array mapping
-namespace DSA_practice
+/*namespace DSA_practice
 {
     using System;
 
@@ -642,6 +641,102 @@ namespace DSA_practice
         }
     }
 
+}*/
+
+//selection sort
+/*namespace DSA_practice
+{
+
+    class Program
+    {
+        static void Main()
+        {
+
+            int[] arr = { 13, 46, 24, 52, 20, 9 };
+            for (int i = 0; i < arr.Length-1; i++)
+            {
+                int min = i;
+                for (int j = i; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[min])
+                    {
+                        min = j;
+                    }
+                }
+                int temp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = temp;
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//bubble sort
+/*namespace DSA_practice
+{
+
+    class Program
+    {
+        static void Main()
+        {
+
+            int[] arr = { 13, 46, 24, 52, 20, 9 };
+            for (int i =arr.Length-1; i>=1; i--)
+            {
+                for (int j = 0; j <=i-1; j++)
+                {
+                    if (arr[j] > arr[j+1])
+                    {
+                        int temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                    }
+                }
+                
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//insertion sort
+namespace DSA_practice
+{
+
+    class Program
+    {
+        static void Main()
+        {
+
+            int[] arr = { 14,9,15,12,6,8,18 };
+
+            for (int i = 0; i <=arr.Length-1; i++)
+            {
+                int j = i;
+                while (j>0 && arr[j-1]>arr[j])
+                {
+                    int temp = arr[j-1];
+                    arr[j-1] = arr[j ];
+                    arr[j] = temp;
+                    j--;
+                }
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            Console.ReadLine();
+        }
+    }
 }
 
 
