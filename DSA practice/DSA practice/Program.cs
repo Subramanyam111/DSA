@@ -709,7 +709,8 @@ using System.Threading.Tasks;
 }*/
 
 //insertion sort
-namespace DSA_practice
+/*
+ namespace DSA_practice
 {
 
     class Program
@@ -733,6 +734,77 @@ namespace DSA_practice
             for (int i = 0; i < arr.Length; i++)
             {
                 Console.WriteLine(arr[i]);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+*/
+//merge sort
+namespace DSA_practice
+{
+    public class merge_sort
+    {
+        public void MG(int[] arr,int low,int high)
+        {
+            if (low>=high)
+            {
+                return;
+            }
+            int mid = (low + high) / 2;
+            MG(arr, low, mid);
+            MG(arr, mid + 1, high);
+            Merge(arr, low, mid, high);
+        }
+        public void Merge(int[] arr,int low,int mid,int high)
+        {
+            List<int> temp = new List<int>();
+            int left = low;
+            int right = mid+1;
+            while (left<=mid && right<=high)
+            {
+                if (arr[left]<=arr[right])
+                {
+                    temp.Add(arr[left]);
+                    left++;
+                }
+
+                else
+                {
+                    temp.Add(arr[right]);
+                    right++;
+                }
+            }
+            while (left<=mid)
+            {
+                temp.Add(arr[left]);
+                left++;
+            }
+            while (right <= high)
+            {
+                temp.Add(arr[right]);
+                right++;
+            }
+            for (int i = low; i <=high; i++)
+            {
+                arr[i] = temp[i-low];
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+
+            int[] arr = { 14, 9,1, 15, 12, 6,1, 8, 18 ,1};
+            int low = 0;
+            int high = arr.Length-1;
+            merge_sort m = new merge_sort();
+            m.MG(arr, low, high);
+            foreach (int num in arr)
+            {
+                Console.Write(num + " ");
             }
             Console.ReadLine();
         }
