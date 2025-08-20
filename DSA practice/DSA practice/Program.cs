@@ -891,8 +891,9 @@ using System.Threading.Tasks;
 }*/
 
 //arrays
-//1
-namespace DSA_practice
+//largest element in the array 
+/*
+ namespace DSA_practice
 {
     class Program
     {
@@ -910,6 +911,55 @@ namespace DSA_practice
             Console.WriteLine(largest);
             Console.ReadLine();
 
+        }
+    }
+}
+*/
+//second largest
+//brot force 
+/*
+ namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 3, 2, 1, 5, 2 };
+            //sorting
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                int min = i;
+                for (int j = i; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[min])
+                    {
+                        min = j;
+                    }
+                }
+                int temp = arr[min];
+                arr[min] = arr[i];
+                arr[i] = temp;
+            }
+            Console.WriteLine(arr[arr.Length-2]);
+            Console.ReadLine();
+
+        }
+    }
+}
+*/
+
+//better solution
+
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 3, 2, 1, 5, 2 };
+
+
+            Console.ReadLine();
         }
     }
 }
