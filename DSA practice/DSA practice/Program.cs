@@ -740,11 +740,12 @@ using System.Threading.Tasks;
     }
 }
 */
-//merge sort
-namespace DSA_practice
+//merge sort(with recursion)
+/*namespace DSA_practice
 {
     public class merge_sort
     {
+        //for dividing 
         public void MG(int[] arr,int low,int high)
         {
             if (low>=high)
@@ -754,8 +755,12 @@ namespace DSA_practice
             int mid = (low + high) / 2;
             MG(arr, low, mid);
             MG(arr, mid + 1, high);
+
+            //merging object
             Merge(arr, low, mid, high);
         }
+
+        //merging 
         public void Merge(int[] arr,int low,int mid,int high)
         {
             List<int> temp = new List<int>();
@@ -775,6 +780,8 @@ namespace DSA_practice
                     right++;
                 }
             }
+
+            //for remaining
             while (left<=mid)
             {
                 temp.Add(arr[left]);
@@ -785,6 +792,8 @@ namespace DSA_practice
                 temp.Add(arr[right]);
                 right++;
             }
+
+            //converting temp list to array
             for (int i = low; i <=high; i++)
             {
                 arr[i] = temp[i-low];
@@ -797,11 +806,13 @@ namespace DSA_practice
         static void Main()
         {
 
-            int[] arr = { 14, 9,1, 15, 12, 6,1, 8, 18 ,1};
+            int[] arr = { 14, 9, 1, 15, 12, 6, 1, 8, 18 , 1};
             int low = 0;
             int high = arr.Length-1;
             merge_sort m = new merge_sort();
             m.MG(arr, low, high);
+
+            //printing sorted array
             foreach (int num in arr)
             {
                 Console.Write(num + " ");
@@ -809,6 +820,96 @@ namespace DSA_practice
             Console.ReadLine();
         }
     }
+}*/
+
+//quick sort
+/*namespace DSA_practice
+{
+
+    public class quickSort
+    {
+        public void qs(int[] arr,int low,int high)
+        {
+            if (low<high)
+            {
+                int partion= sort(arr,low,high);
+                qs(arr, low, partion - 1);
+                qs(arr, partion + 1, high);
+            }
+
+        }
+        public  int sort(int[] arr,int low,int high)
+        {
+            int pivote = arr[low];
+            int i = low;
+            int j = high;
+            while (i<j)
+            {
+                while (arr[i]<=pivote && i<high)
+                {
+                    i++;
+                }
+                while (arr[j]>pivote && j>=low)
+                {
+                    j--;
+                }
+                if (i<j)
+                {
+                    int temp1 = arr[i];
+                     arr[i] = arr[j];
+                     arr[j] = temp1;
+
+                }
+                
+            }
+            int temp2 = arr[low];
+            arr[low] = arr[j];
+            arr[j] = temp2;
+            return j;
+
+        }
+    }
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = {5,3,2,6,1,4};
+            int low = 0;
+            int high = arr.Length - 1;
+            quickSort Q = new quickSort();
+            Q.qs(arr, low, high);
+
+            //printing sorted array
+            foreach (int num in arr)
+            {
+                Console.Write(num + " ");
+            }
+
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//arrays
+//1
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 3, 2, 1, 5, 2 };
+            int largest = arr[0];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i]>largest)
+                {
+                    largest = arr[i];
+                }
+            }
+            Console.WriteLine(largest);
+            Console.ReadLine();
+
+        }
+    }
 }
-
-
