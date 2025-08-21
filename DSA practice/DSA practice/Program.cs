@@ -1133,6 +1133,35 @@ using System.Threading.Tasks;
         }
     }
 }*/
+//armstrong number for any number
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int temp = 153;
+            int num = temp;
+            int sum = 0;
+            int power = temp.ToString().Length;
+            while (num!=0)
+            {
+                int digit = num % 10;
+                sum = sum +(int)Math.Pow(digit,power);
+                num /= 10;
+            }
+            if (temp==sum)
+            {
+                Console.WriteLine(1);
+            }
+            else
+            {
+                Console.WriteLine(0);
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
 
 namespace DSA_practice
 {
@@ -1140,19 +1169,20 @@ namespace DSA_practice
     {
         static void Main()
         {
-            int x = 122;
-            string n = x.ToString();
-            for (int i = 0; i < n.Length; i++)
+            int num = -13456;
+            int count = 0;
+            if (num==0)
             {
-                if (n[i]!=n[n.Length-1-i])
-                {
-                    Console.WriteLine("not okay");
-                }
-                else
-                {
-                    Console.WriteLine("okay");
-                }
+                count = 1;
             }
+            num = Math.Abs(num);
+            while (num!=0)
+            {
+                count++;
+                num /= 10;
+                  
+            }
+            Console.WriteLine(count);
             Console.ReadLine();
         }
     }
