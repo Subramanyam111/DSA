@@ -950,7 +950,7 @@ using System.Threading.Tasks;
 
 //better solution
 
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -981,4 +981,180 @@ namespace DSA_practice
             Console.ReadLine();
         }
     }
+}*/
+
+//optimal solution
+/*
+ namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 3, 2, 1, 5, 2 };
+            int largest = arr[0];
+            int second_largest = -1;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i]>largest)
+                {
+                    second_largest = largest;
+                    largest = arr[i];
+
+                }
+                else if (arr[i]<largest && arr[i]>second_largest)
+                {
+                    second_largest = arr[i];
+                }
+            }
+            Console.WriteLine(second_largest);
+            Console.ReadLine();
+        }
+    }
 }
+*/
+
+//second smallest
+/*
+ namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 3, 2, 1, 5, 2 };
+            int smallest = arr[0];
+            int second_smallest = 9;//max value
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i] < smallest)
+                {
+                    second_smallest = smallest;
+                    smallest = arr[i];
+
+                }
+                else if (arr[i] > smallest && arr[i] < second_smallest)
+                {
+                    second_smallest = arr[i];
+                }
+            }
+            Console.WriteLine(second_smallest);
+            Console.ReadLine();
+        }
+    }
+}
+ */
+
+//checking the array is sorted or not
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            //int[] arr = { 3, 2, 1, 5, 2 };
+            int[] arr = { 1, 2, 3, 4, 4, 4, 5 };
+            bool is_sorted = true;
+            for (int i = 1; i < arr.Length; i++)
+            {
+                if (arr[i]>=arr[i-1])
+                {
+                    
+                }
+                else
+                {
+                    is_sorted=false;
+                    break;
+
+                }              
+            }
+            
+            if (is_sorted==true)
+            {
+                Console.WriteLine("array is  perfect");
+            }
+            else
+            {
+                Console.WriteLine("array is not perfect");
+            }
+   
+            Console.ReadLine();
+        }
+    }
+}*/
+//brot force(eliminating duplicate elements)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            //int[] arr = { 3, 2, 1, 5, 2 };
+            int[] arr = { 1, 2, 3, 4, 4, 4, 5 };
+            SortedSet<int> st = new SortedSet<int>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                st.Add(arr[i]);
+            }
+            
+            foreach (int n in st)
+            {
+                Console.WriteLine(n);
+            }
+            
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//optimal solution
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 1, 1,1,2,2,2, 3, 4, 4, 4, 5,5,5, };
+
+            int i = 0;
+            for (int j = 1; j < arr.Length; j++)
+            {
+                if (arr[j]!=arr[i])
+                {
+                    arr[i + 1] = arr[j];
+                    i++;
+                }
+            }
+            for (int j = 0; j <=i; j++)
+            {
+                Console.WriteLine(arr[j]);
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int x = 122;
+            string n = x.ToString();
+            for (int i = 0; i < n.Length; i++)
+            {
+                if (n[i]!=n[n.Length-1-i])
+                {
+                    Console.WriteLine("not okay");
+                }
+                else
+                {
+                    Console.WriteLine("okay");
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+
