@@ -957,7 +957,26 @@ namespace DSA_practice
         static void Main()
         {
             int[] arr = { 3, 2, 1, 5, 2 };
-
+            //first largest
+            int largest = arr[0];
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] > largest)
+                {
+                    largest = arr[i];
+                }
+            }
+            //second largest
+            int second_largest = -1;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i]>second_largest && arr[i]!=largest)
+                {
+                second_largest = arr[i];
+                }
+            
+            }
+            Console.WriteLine(second_largest);
 
             Console.ReadLine();
         }
