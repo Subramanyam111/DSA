@@ -1162,8 +1162,9 @@ using System.Threading.Tasks;
         }
     }
 }*/
-
-namespace DSA_practice
+//counting digits 
+/*
+ namespace DSA_practice
 {
     class Program
     {
@@ -1187,4 +1188,132 @@ namespace DSA_practice
         }
     }
 }
+ */
+//left rotate the array by one place
+/*
+ namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 3, 2, 1, 5, 2 };
+            int temp = arr[0];
+            for (int i = 1; i < arr.Length; i++)
+            {
+                arr[i - 1] = arr[i];
+            }
+            arr[arr.Length - 1] = temp;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine(arr[i]);
+            }
+            Console.ReadLine();
+        }
+    }
+}
+ */
+//left rotate the array by D place (brut force)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 1,2,3,4,5 };
+            int d = 7%arr.Length;
+            int[] temp = new int[d];
+            //srep-1 creating a temp d array
+            for (int i = 0; i < d; i++)
+            {
+                temp[i] = arr[i];
+            }
+            //step-2 shifting the remainging elements to frount 
+            for (int i = 0; i < arr.Length-d; i++)
+            {
+                arr[i] = arr[d+i]; 
+            }
+            //step-3 inserting temp to the array 
+            for (int i = arr.Length-d; i < arr.Length; i++)
+            {
+                arr[i] = temp[i - (arr.Length - d)];
+            }
+            foreach (int item in arr)
+            {
+                Console.Write(item+" ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+//left rotate the array by one place(optimal solution)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] nums = { 1, 2, 3, 4, 5 };
+            int n = nums.Length;
+            int k = 3;
+            k %= n;
+            Array.Reverse(nums,0,n);
+            Array.Reverse(nums, 0,k);
+            Array.Reverse(nums, k, n-k);
+            foreach (int item in nums)
+            {
+                Console.WriteLine(item);
+            }
+
+
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            string s = "A man, a plan, a canal: Panama";
+            s = s.ToLower();
+            
+            StringBuilder sb = new StringBuilder();
+
+            foreach (char c in s)
+            {
+                if (char.IsLetterOrDigit(c)) // only allow letters and numbers
+                {
+                    sb.Append(c);
+                }
+            }
+            string str = sb.ToString();
+            
+            char[] arr = str.ToCharArray();
+            int n = arr.Length;
+            Array.Reverse(arr);
+            string reversed = new string(arr);
+            Console.WriteLine();
+            if (n==0)
+            {
+                Console.WriteLine("it is a palindrom ");
+            }
+            else if (str == reversed)
+            {
+                Console.WriteLine("it is a palindrom ");
+            }
+            else
+            {
+                Console.WriteLine("not");
+            }
+                      
+            Console.ReadLine();
+        }
+    }
+}
+
+
 
