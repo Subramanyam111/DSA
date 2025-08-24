@@ -1271,8 +1271,8 @@ using System.Threading.Tasks;
     }
 }*/
 
-//
-namespace DSA_practice
+//string plaindrom
+/*namespace DSA_practice
 {
     class Program
     {
@@ -1310,6 +1310,39 @@ namespace DSA_practice
                 Console.WriteLine("not");
             }
                       
+            Console.ReadLine();
+        }
+    }
+}*/
+
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+
+            int a = 0 ,b = 1,c = 0;
+            int n = 0;
+            if (n==0)
+            {
+                c = 0;
+            }
+            else if (n==1)
+            {
+                c = 1;
+            }
+            else if(n>1)
+            {
+                for (int i = 1; i < n; i++)
+                {
+                    c = a + b;
+                    a = b;
+                    b = c;
+                }
+            }
+            
+            Console.WriteLine($"{n}th Fibonacci number is {c}");
             Console.ReadLine();
         }
     }
