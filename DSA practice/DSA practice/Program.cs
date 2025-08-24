@@ -1315,7 +1315,7 @@ using System.Threading.Tasks;
     }
 }*/
 
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -1343,6 +1343,153 @@ namespace DSA_practice
             }
             
             Console.WriteLine($"{n}th Fibonacci number is {c}");
+            Console.ReadLine();
+        }
+    }
+}*/
+//moving zeros to the right(my solution brut force)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 1, 0, 2, 3, 2, 0, 0, 4, 5, 1 };
+            List<int> temp = new List<int>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i]!=0)
+                {
+                    temp.Add(arr[i]);
+                }
+            }
+            for (int i = 0; i < temp.Count; i++)
+            {
+                arr[i] = temp[i];
+            }
+            for (int i = temp.Count; i < arr.Length; i++)
+            {
+                arr[i] = 0;
+            }
+            foreach (int item in arr)
+            {
+                Console.Write(item+ " ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//optimal solution
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 1, 0, 2, 3, 2, 0, 0, 4, 5, 1 };
+            int j = -1;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i]==0)
+                {
+                    j = i;
+                    break;
+                }
+            }
+            for (int i = j+1; i < arr.Length; i++)
+            {
+                if (arr[i]!=0)
+                {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                    j++;
+                }
+            }
+            foreach (int item in arr)
+            {
+                Console.Write(item+" ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//linear search
+//if the array contains same multiple elements it gets only the first apeared element 
+/*namespace DSA_practice
+{
+    public class search
+    {
+        public int m1(int[] arr,int num)
+        {
+            int n = arr.Length;
+            for (int i = 0; i < n; i++)
+            {
+                if (arr[i] == num)
+                {
+                    return i;                  
+                }
+
+            }
+            return -1;
+        }
+    }
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 1, 2, 3, 0, 4, 5};
+            int num=0;
+            search s = new search();
+            int ss=s.m1(arr, num);
+            if (ss!=-1)
+            {
+                Console.WriteLine(num+" found at index "+ss);
+            }
+            else
+            {
+                Console.WriteLine(num+" not found");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr1 = { 1, 1, 2, 3, 4, 5 };
+            int[] arr2 = { 2, 3, 4, 4, 5, 6 };
+           
+            SortedSet<int> temp = new SortedSet<int>();
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                temp.Add(arr1[i]);
+            }
+            for (int i = 0; i < arr2.Length; i++)
+            {
+                temp.Add(arr2[i]);
+            }
+            int[] union =new int[temp.Count];
+            int j = 0;
+            foreach (int item in temp)
+            {
+                union[j] = item;
+                j++;
+                
+            }
+            foreach (int item in union)
+            {
+                Console.WriteLine(item+" ");
+            }
+            
+
             Console.ReadLine();
         }
     }
