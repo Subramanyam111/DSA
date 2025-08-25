@@ -1457,8 +1457,8 @@ using System.Threading.Tasks;
     }
 }*/
 
-//
-namespace DSA_practice
+//union of arrays (brout force)
+/*namespace DSA_practice
 {
     class Program
     {
@@ -1494,6 +1494,154 @@ namespace DSA_practice
         }
     }
 }
+*/
 
+//untin of sorted arrays (optimal solution-2 pointer )
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] a = { 1, 1, 2, 3, 4, 5 };
+            int[] b = { 2, 3, 4, 4, 5, 6 };
+            List<int> union = new List<int>();
+            int n1 = a.Length;
+            int n2 = b.Length;
+            int i = 0;
+            int j = 0;
+            while (i<n1 && j<n2)
+            {
+                if (a[i]<=b[j])
+                {
+                    if (union.Count==0 || union[union.Count-1]!=a[i])
+                    {
+                        union.Add(a[i]);
+
+                    }
+                    i++;
+                }
+                else
+                {
+                    if (union.Count == 0 || union[union.Count - 1] != b[j])
+                    {
+                        union.Add(b[j]);
+
+                    }
+                    j++;
+                }
+            }
+            while (j<n2)
+            {
+                if (union.Count == 0 || union[union.Count - 1] != b[j])
+                {
+                    union.Add(b[j]);
+
+                }
+                j++;
+            }
+            while (i < n1)
+            {
+                if (union.Count == 0 || union[union.Count - 1] != a[i])
+                {
+                    union.Add(a[i]);
+
+                }
+                i++;
+            }
+            foreach (int item in union)
+            {
+                Console.Write(item+" " );
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//intersection two sorted arrays(brut force)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] a = { 1, 2,2,3,3,4,5,6 };
+            int[] b = { 2, 3, 3,5,6,6,7 };
+            int n1 = a.Length;
+            int n2 = b.Length;
+
+            List<int> vis = new List<int>(n2);
+            for (int i = 0; i < n2; i++)
+            {
+                vis.Add(0);
+            }
+
+            List<int> inter = new List<int>();
+
+            for (int i = 0; i < n1; i++)
+            {
+                for (int j = 0; j < n2; j++)
+                {
+                    if (a[i]==b[j] && vis[j]==0)
+                    {
+                        inter.Add(a[i]);
+                        vis[j]=1;
+                        break;
+                    }
+                    if (b[j]>a[i])
+                    {
+                        break;
+                    }
+                }
+            }
+            foreach (int item in inter)
+            {
+                Console.Write(item+" ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] a = { 1, 2, 2, 3, 3, 4, 5, 6 };
+            int[] b = { 2, 3, 3, 5, 6, 6, 7 };
+            int n1 = a.Length;
+            int n2 = b.Length;
+            int i = 0;
+            int j = 0;
+            List<int> inter = new List<int>();
+            while (i<n1 && j<n2)
+            {
+                if (a[i]<b[j])
+                {
+                    i++;
+                }
+                else if (b[j]<a[i])
+                {
+                    j++; 
+
+                }
+                else
+                {
+                    inter.Add(a[i]);
+                    i++;
+                    j++;
+                }
+            }
+            foreach (int item in inter)
+            {
+                Console.Write(item+" ");
+            }
+            Console.ReadLine();
+        }
+    }
+}
 
 
