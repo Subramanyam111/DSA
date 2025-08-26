@@ -1603,8 +1603,8 @@ using System.Threading.Tasks;
     }
 }*/
 
-//
-namespace DSA_practice
+//intersection of two sored arrays (optimal solution-2 pointer)
+/*namespace DSA_practice
 {
     class Program
     {
@@ -1642,6 +1642,118 @@ namespace DSA_practice
             Console.ReadLine();
         }
     }
+}*/
+
+//missing element in the arrray(brute force)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr= { 1, 2, 4, 5 };
+            int n = 5;
+            int missing = 0;
+            for (int i = 1; i <=n; i++)
+            {
+                int flag = 0;
+                for (int j = 0; j < n-1; j++)
+                {
+                    if (arr[j]==i)
+                    {
+                        flag = 1;
+                        break;
+                    }
+                }
+                if (flag==0)
+                {
+                    missing = i;
+                    break;
+                }
+            }
+            Console.WriteLine(missing);
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//missing element in the arrray(hashing -better solution)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 1, 2, 4, 5 };
+            int n = 5;
+            int missing = 0;
+            int[] hash = new int[n+1];
+            
+            for (int i = 0; i <arr.Length; i++)
+            {
+                hash[arr[i]] = 1;
+            }
+            for (int i = 1; i <=n; i++)
+            {
+                if (hash[i]==0)
+                {
+                    missing= i;
+                    break;
+                }
+            }
+            Console.WriteLine(missing);
+            Console.ReadLine();
+        }
+    }
+}*/
+
+
+//missing element in the arrray(sum -optimal solution-1)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 1, 2, 4, 5 };
+            int n = 5;
+            int a = 0;
+
+            int sum = (n * (n + 1)) / 2;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                a += arr[i];
+            }
+            Console.WriteLine(sum-a);
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//missing element in the arrray(XOR -optimal solution-2)
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] arr = { 3,0,1 };
+            int n = arr.Length;
+            int XOR1 = 0;
+            int XOR2 = 0;
+            Array.Sort(arr);
+            for (int i = 0; i <=n; i++)
+            {
+                XOR1 = XOR1 ^ i;
+
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                XOR2 = XOR2 ^ arr[i];
+            }
+            int res = XOR1 ^ XOR2;
+            Console.WriteLine(res);
+            Console.ReadLine();
+        }
+    }
 }
-
-
