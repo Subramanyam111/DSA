@@ -1731,7 +1731,7 @@ using System.Threading.Tasks;
 }*/
 
 //missing element in the arrray(XOR -optimal solution-2)
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -1741,7 +1741,6 @@ namespace DSA_practice
             int n = arr.Length;
             int XOR1 = 0;
             int XOR2 = 0;
-            Array.Sort(arr);
             for (int i = 0; i <=n; i++)
             {
                 XOR1 = XOR1 ^ i;
@@ -1753,6 +1752,118 @@ namespace DSA_practice
             }
             int res = XOR1 ^ XOR2;
             Console.WriteLine(res);
+            Console.ReadLine();
+        }
+    }
+}*/
+
+
+//maxinum consective ones
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] nums = { 1, 1, 0, 1, 1, 1, 0, 1, 1 };
+            int maxi = 0;
+            int count = 0;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i]==1)
+                {
+                    count++;
+                    maxi = Math.Max(maxi,count);
+                }
+                else
+                {
+                    count = 0;
+                }
+            }
+            Console.WriteLine(maxi);
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//find the number that appears once and other numbers twice(brute force)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] nums = { 1, 1, 2,2, 3, 3, 3, 4 };
+            int n = nums.Length;
+            for (int i = 0; i < n; i++)
+            {
+                int num = nums[i];
+                int count = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (nums[j]==num)
+                    {
+                        count++;
+                    }
+                }
+                if (count==1)
+                {
+                    Console.WriteLine(num);
+                    break;
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//find the number that appears once and other numbers twice(better solution -hashing)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] nums = { 1, 1, 2, 2, 3, 3, 4 };
+            int n = nums.Length;
+            int maxi = nums[0];
+            int[] hash = new int[nums.Max()+1];
+            for (int i = 0; i < n; i++)
+            {
+                maxi = Math.Max(maxi, nums[i]);
+                hash[maxi] = 0;
+            }
+            for (int i = 0; i < n; i++)
+            {
+                hash[nums[i]]++;
+            }
+            for (int i = 0; i < n; i++)
+            {
+                if (hash[nums[i]]==1)
+                {
+                    Console.WriteLine(nums[i]);
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//find the number that appears once and other numbers twice(better solution -hashing)
+namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] nums = { 4,1, 1, 2, 2, 3, 3 };
+            int n = nums.Length;
+            int XOR = 0;
+            for (int i = 0; i < n; i++)
+            {
+                XOR ^= nums[i];
+            }
+            Console.WriteLine(XOR);
             Console.ReadLine();
         }
     }
