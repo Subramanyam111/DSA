@@ -1850,7 +1850,7 @@ using System.Threading.Tasks;
 }*/
 
 //find the number that appears once and other numbers twice(better solution -hashing)
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -1867,4 +1867,159 @@ namespace DSA_practice
             Console.ReadLine();
         }
     }
+}*/
+
+
+//longest subarray with given sum only for positive values (brute force)
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] nums = { 1, 2, 3, 1, 1, 1, 3, 3 };
+            //int[] nums = { 1, 1, 1, 2, 2, 3 };
+            int n = nums.Length, m = 3, maxlen = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int sum = 0;
+                for (int j = i; j < n; j++)
+                {
+                    sum += nums[j];
+
+                    if (sum == m)
+                    {
+                        maxlen = Math.Max(maxlen, j - i + 1);
+                    }
+                    else if (sum > m)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            Console.WriteLine(maxlen);
+            Console.ReadLine();
+        }
+    }
+}*/
+//printing all sub arrays and total number of sub arrays
+
+/*namespace DSA_practice
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] nums = { 1, 2, 3 };
+            int n = nums.Length;
+            int count = 0;
+            for (int i = 0; i < n; i++)   // start index
+            {
+                for (int j = i; j < n; j++)   // end index
+                {
+                    // Print subarray nums[i..j]
+                    for (int k = i; k <= j; k++)
+                    {
+                        Console.Write(nums[k] + " ");
+                    }
+                    count++;
+                    Console.WriteLine();
+                }
+            }
+            Console.WriteLine("number of sub arrays : "+count+"");
+            Console.ReadLine();
+        }
+    }
 }
+ */
+
+//
+/*namespace DSA_practice
+{
+    class Program
+    {
+        
+            static void Main()
+            {
+                int[] nums = { 1, 1, 1, 2, 2, 3 };
+                int k = 4;
+
+                int n = nums.Length;
+                int prefixSum = 0;
+                int maxLen = 0;
+
+                Dictionary<int, int> map = new Dictionary<int, int>();
+
+                for (int i = 0; i < n; i++)
+                {
+                    prefixSum += nums[i];
+
+                    // Case 1: Subarray starts from index 0
+                    if (prefixSum == k)
+                    {
+                        maxLen = Math.Max(maxLen, i + 1);
+                    }
+
+                    // Case 2: Subarray found between some earlier index and i
+                    int req = prefixSum - k;
+                    if (map.ContainsKey(req))
+                    {
+                        int len = i - map[req];
+                        maxLen = Math.Max(maxLen, len);
+                    }
+
+                    // Store prefix sum in map if not already present
+                    if (!map.ContainsKey(prefixSum))
+                    {
+                        map[prefixSum] = i;
+                    }
+                }
+
+                Console.WriteLine("Longest subarray length = " + maxLen);
+            
+        
+        Console.ReadLine();
+        }
+    }
+}*/
+
+//
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 1, 1, 1,2, 2, 3 };
+            int k = 4,
+             n = nums.Length,
+             sum = nums[0],
+             left = 0,
+             right = 0,
+             maxlength = 0;
+            while (right<n)
+            {
+                while (left<=right && sum>k)
+                {
+                    sum -= nums[left];
+                    left++;
+                }
+                if (sum==k)
+                {
+                    maxlength = Math.Max(maxlength, right - left + 1); 
+                }
+                right++;
+                if (right<n)
+                {
+                    sum += nums[right];
+                }
+            }
+            Console.WriteLine(maxlength);
+            Console.ReadLine();
+        }
+    }
+}
+
