@@ -1935,7 +1935,7 @@ using System.Threading.Tasks;
 }
  */
 
-//
+//longest subarray with given sum only for positive values (better solution -hashing)
 /*namespace DSA_practice
 {
     class Program
@@ -1985,8 +1985,8 @@ using System.Threading.Tasks;
     }
 }*/
 
-//
-namespace DSA_practice
+//longest subarray with given sum only for positive values (optimal -2 pointer)
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2018,6 +2018,109 @@ namespace DSA_practice
                 }
             }
             Console.WriteLine(maxlength);
+            Console.ReadLine();
+        }
+    }
+}*/
+//two sum(brute force)
+//Returns index values
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] arr = { 2, 6, 5, 8, 11 };
+            int target = 14;
+            int n = arr.Length;          
+            for (int i = 0; i < n-1; i++)
+            {
+                for (int j = i+1; j < n; j++)
+                {
+                    if (arr[i]+arr[j]== target)
+                    {
+                        Console.WriteLine(i+","+j);
+                    }
+                    
+                }
+            }
+            
+
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//two sum(better solution -hashing)-----(optimal for returnig the indexes)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 2, 6, 5, 8, 11 };
+            int target = 14;
+            int n = nums.Length;
+            Dictionary<int, int> mapp = new Dictionary<int, int>();
+            for (int i = 0; i < n; i++)
+            {
+                int num = nums[i];
+                int more = target - num;
+                if (mapp.ContainsKey(more))
+                {
+                    Console.WriteLine($"Pair found at indices {mapp[more]} and {i}");
+                }
+                if (!mapp.ContainsKey(num))
+                    mapp[num] = i;
+               
+            }
+
+            Console.ReadLine();
+        }
+    }
+}*/
+//two sum (optimla -2 pointer)----(not for returning the index values)
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 2, 6, 5, 8, 11 };
+            int target = 14;
+            int n = nums.Length;
+            int left = 0;
+            int right = n - 1;
+            int yes = 0;
+            while (left<right)
+            {
+                int sum = nums[left] + nums[right];
+                if (sum>target)
+                {
+                    right--;
+                }
+                else if (sum<target)
+                {
+                    left++;
+                }
+                else if (sum==target)
+                {
+                    yes++;
+                    break;
+                }
+                
+            }
+            if (yes==0)
+            {
+                Console.WriteLine("nooooooo");
+            }
+            else
+            {
+                Console.WriteLine("yesssss");     
+            }
             Console.ReadLine();
         }
     }
