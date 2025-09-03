@@ -2082,7 +2082,7 @@ using System.Threading.Tasks;
     }
 }*/
 //two sum (optimla -2 pointer)----(not for returning the index values)
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2124,5 +2124,101 @@ namespace DSA_practice
             Console.ReadLine();
         }
     }
+}*/
+
+//sorting an array of 0s,1s and,2s (better solution)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] arr = { 0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1 };
+            int count0 = 0;
+            int count1 = 1;
+            int count2 = 2;
+            int n = arr.Length;
+            for (int i = 0; i < n; i++)
+            {
+                if (arr[i]==0)
+                {
+                    count0++;
+                }
+                else if (arr[i]==1)
+                {
+                    count1++;
+                }
+                else
+                {
+                    count2++;
+                }
+            }
+            for (int i = 0; i < count0; i++)
+            {
+                arr[i] = 0;
+            }
+            for (int i = count0; i < count0+count1; i++)
+            {
+                arr[i] = 1;
+            }
+            for (int i = count0+count1 ; i < n; i++)
+            {
+                arr[i] = 2;
+            }
+
+            foreach (int item in arr)
+            {
+                Console.Write(item+" ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//sorting an array of 0s,1s and,2s (optimal solution - 3 pointer)
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 0, 1, 2, 0, 1, 2, 1, 2, 0, 0, 0, 1 };
+            int n = nums.Length;
+            int low = 0;
+            int mid = 0;
+            int high = n - 1;
+            while(mid<=high)
+            { 
+                if (nums[mid]==0)
+                {
+                    int temp =nums[low];
+                    nums[low] = nums[mid];
+                    nums[mid] = temp;
+                    low++;
+                    mid++;
+                }
+                else if (nums[mid]==1)
+                {
+                    mid++;
+                }
+                else
+                {
+                    int temp = nums[mid];
+                    nums[mid] = nums[high];
+                    nums[high] = temp;
+                    high--;
+                }
+            }
+
+            foreach (int item in nums)
+            {
+                Console.Write(item+" ");
+            }
+            Console.ReadLine();
+        }
+    }
 }
+
 
