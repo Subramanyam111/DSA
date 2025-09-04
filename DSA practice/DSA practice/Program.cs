@@ -2177,7 +2177,7 @@ using System.Threading.Tasks;
 }*/
 
 //sorting an array of 0s,1s and,2s (optimal solution - 3 pointer)
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2219,6 +2219,111 @@ namespace DSA_practice
             Console.ReadLine();
         }
     }
-}
+}*/
 
+//majority element by (>n/2 times)--(brute force)
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 7, 7, 5, 7, 5, 1, 5, 7, 5, 5, 7, 7, 5, 5, 5, 5 };
+            int n = nums.Length;
+            
+            for (int i = 0; i < n; i++)
+            {
+                int count = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (nums[i]==nums[j])
+                    {
+                        count++;
+                    }
+                }
+                if (count>n/2)
+                {
+                    Console.WriteLine(nums[i]);
+                    break;
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}
+//majority element by (>n/2 times)--(better solution)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 7, 7, 5, 7, 5, 1, 5, 7, 5, 5, 7, 7, 5, 5, 5, 5 };
+            Dictionary<int, int> map = new Dictionary<int, int>();
+            int n = nums.Length;
+            for (int i = 0; i < n; i++)
+            {               
+                    if (map.ContainsKey(nums[i]))
+                        map[nums[i]]++;
+                    else
+                        map[nums[i]] = 1;             
+            }
+            foreach (int it in map.Keys)
+            {
+                if (map[it]>n/2)
+                {
+                    Console.WriteLine(it);
+                }
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+//majority element by (>n/2 times) (optimal)--(moor's voting algorithm)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 7, 7, 5, 7, 5, 1, 5, 7, 5, 5, 7, 7, 5, 5, 5, 5 };
+            int n = nums.Length;
+            int count = 0;
+            int ele=0;
+            for (int i = 0; i < n; i++)
+            {
+                if (count==0)
+                {
+                    count = 1;
+                    ele = nums[i];
+                }
+                else if (nums[i]==ele)
+                {
+                    count++;
+                }
+                else
+                {
+                    count--;
+                }
+            }
+            int count2 = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (nums[i]==ele)
+                {
+                    count2++;
+                }
+                
+            }
+            if (count2>n/2)
+            {
+                Console.WriteLine(ele+" - "+count2+" times");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
 
