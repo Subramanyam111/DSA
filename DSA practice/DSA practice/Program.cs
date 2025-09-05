@@ -2222,7 +2222,7 @@ using System.Threading.Tasks;
 }*/
 
 //majority element by (>n/2 times)--(brute force)
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2251,7 +2251,9 @@ namespace DSA_practice
             Console.ReadLine();
         }
     }
-}
+}*/
+
+
 //majority element by (>n/2 times)--(better solution)
 /*namespace DSA_practice
 {
@@ -2327,3 +2329,162 @@ namespace DSA_practice
     }
 }*/
 
+//maximum subarray sum(brute force)
+/*
+ namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 1,-2,-3,-4,5,-1,3,-2 };
+            int n = nums.Length;
+            int max = nums[0];
+            
+            for (int i = 0; i < n; i++)
+            {
+                for (int j =i; j <n; j++)
+                {
+                    int sum = 0;
+                    for (int k = i; k <=j; k++)
+                    {
+                        sum += nums[k];
+                    }
+                    max = Math.Max(max, sum);
+                }
+            }
+            Console.WriteLine(max);
+            Console.ReadLine();
+        }
+    }
+}
+     */
+
+//maximum subarray sum(better solution)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 1, -2, -3, -4, 5, -1, 3, -2 };
+            int n = nums.Length;
+            int max = nums[0];
+
+            for (int i = 0; i < n; i++)
+            {
+                int sum = 0;
+                for (int j = i; j < n; j++)
+                {
+                                            
+                    sum += nums[j];
+                    
+                    max = Math.Max(max, sum);
+                }
+            }
+            Console.WriteLine(max);
+            Console.ReadLine();
+        }
+    }
+}*/
+//maximum subarray sum(optimal solution)--(kadane's algorithm)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 1, -2, -3, -4, 5, -1, 3, -2 };
+            int n = nums.Length;
+            int max = nums[0];
+            int sum = 0;
+            for (int i = 0; i < n; i++)
+            {
+                sum += nums[i];
+                if (sum>max)
+                {
+                    max = sum;
+                }
+                if (sum<0)
+                {
+                    sum = 0;
+                }
+            }
+            Console.WriteLine(max);
+            Console.ReadLine();
+        }
+    }
+}*/
+//maximum subarray sum(optimal solution)--printing the maximum sum array
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 1, -2, -3, -4, 5, -1, 3, -2 };
+            int n = nums.Length;
+            int max = nums[0];
+            int sum = 0;
+            int start = 0;
+            int asstart = 0;
+            int asend = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (sum==0)
+                {
+                    start = i;
+                }
+                sum += nums[i];
+                if (sum > max)
+                {
+                    max = sum;
+                    asstart = start;
+                    asend = i;
+
+                }
+                if (sum < 0)
+                {
+                    sum = 0;
+                }
+            }
+            for (int i = asstart; i <=asend; i++)
+            {
+                Console.Write(nums[i]+" ");
+                
+            }
+            Console.WriteLine();
+            Console.WriteLine(max);
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//best time to buy and sell stocks
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 7,1,5,3,6,4 };
+            int n = nums.Length;
+            int mini = nums[0];
+            int maxprofit = 0;
+            for (int i = 0; i < n; i++)
+            {
+                int cost = nums[i] - mini;
+                maxprofit = Math.Max(maxprofit, cost);
+                mini = Math.Min(mini,nums[i]);
+
+            }
+            Console.WriteLine(maxprofit);
+            Console.ReadLine();
+        }
+    }
+}
