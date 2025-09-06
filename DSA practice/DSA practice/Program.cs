@@ -2465,7 +2465,7 @@ using System.Threading.Tasks;
 }*/
 
 //best time to buy and sell stocks
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2484,6 +2484,144 @@ namespace DSA_practice
 
             }
             Console.WriteLine(maxprofit);
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//Rearange Array Elements by sign (brute force)--it is works onlt if the +ve's and -ve's are the same count in the array
+//output like-(+ve,-ve,+ve,-ve,+ve,-ve,+ve,-ve)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = {3,-2,1,-5,2,-4};
+            int n = nums.Length;
+            int[] pas = new int[n / 2];
+            int[] neg = new int[n / 2];
+            int ne = 0;
+            int pe = 0;
+            for (int i = 0; i < n; i++)
+            {
+                if (nums[i]<0)
+                {
+                    neg[ne] = nums[i];
+                    ne++;
+                }
+                else
+                {
+                    pas[pe] = nums[i];
+                    pe++;
+                }
+            }
+            for (int i = 0; i < n/2; i++)
+            {
+                nums[2 * i] = pas[i];
+                nums[2 * i + 1] = neg[i];
+
+            }
+            foreach (int item in nums)
+            {
+                Console.Write(item);
+            }
+            
+            Console.ReadLine();
+        }
+    }
+}*/
+//Rearange Array Elements by sign (optimal)--it is works onlt if the +ve's and -ve's are the same count in the array
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 3, -2, 1, -5, 2, -4 };         
+            int n = nums.Length;            
+            int pasitive = 0;
+            int negative = 1;
+            int[] ans = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                if (nums[i]<0)
+                {
+                    ans[negative] = nums[i];
+                    negative += 2;
+                }
+                else
+                {
+                    ans[pasitive] = nums[i];
+                    pasitive += 2;
+                }
+            }
+            foreach (int item in ans)
+            {
+                Console.Write(item+",");
+            } 
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//Rearange Array Elements by sign (optimal)--it works in all conditions like (no of +ve's != no of -ve's) also
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 1, 2, -4, -5, 3, 6 };
+            int n = nums.Length;
+
+            List<int> pas = new List<int>();
+            List<int> neg = new List<int>();
+
+            // Separate positives and negatives
+            for (int i = 0; i < n; i++)
+            {
+                if (nums[i] < 0)
+                    neg.Add(nums[i]);
+                else
+                    pas.Add(nums[i]);
+            }
+
+            int ne = neg.Count;
+            int pe = pas.Count;
+            int minsize = Math.Min(ne, pe);
+
+            // Fill alternating positions
+            for (int i = 0; i < minsize; i++)
+            {
+                nums[2 * i] = pas[i];
+                nums[2 * i + 1] = neg[i];
+            }
+
+            // Handle leftovers
+            if (ne > pe) // more negatives left
+            {
+                int idx = minsize * 2;
+                for (int j = minsize; j < ne; j++)
+                {
+                    nums[idx++] = neg[j];
+                }
+            }
+            else if (pe > ne) // more positives left
+            {
+                int idx = minsize * 2;
+                for (int j = minsize; j < pe; j++)
+                {
+                    nums[idx++] = pas[j];
+                }
+            }
+            foreach (int item in nums)
+            {
+                Console.Write(item+", ");
+            }
             Console.ReadLine();
         }
     }
