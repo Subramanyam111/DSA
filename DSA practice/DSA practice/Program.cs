@@ -2568,7 +2568,7 @@ using System.Threading.Tasks;
 }*/
 
 //Rearange Array Elements by sign (optimal)--it works in all conditions like (no of +ve's != no of -ve's) also
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2621,6 +2621,53 @@ namespace DSA_practice
             foreach (int item in nums)
             {
                 Console.Write(item+", ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 2,1,5,4,3,0,0};
+            int n = nums.Length;
+            int ind = -1;
+            for (int i = n-2; i >=0; i--)
+            {
+                if (nums[i]<nums[i+1])
+                {
+                    ind = i;
+                    break;
+                }
+
+            }
+            if (ind==-1)
+            {
+                Array.Reverse(nums);
+                return;
+            }
+
+            for (int i = n-1; i >ind; i--)
+            {
+                if (nums[i]>nums[ind])
+                {
+                    int temp = nums[i];
+                    nums[i] = nums[ind];
+                    nums[ind] = temp;
+                    break;
+                }
+            }
+
+            Array.Reverse(nums, ind + 1, n - ind - 1);
+            foreach (int item in nums)
+            {
+                Console.Write(item+" ");
             }
             Console.ReadLine();
         }
