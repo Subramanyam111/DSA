@@ -2627,8 +2627,8 @@ using System.Threading.Tasks;
     }
 }*/
 
-//
-namespace DSA_practice
+//Next Permutation(optimla solution)---(in brute forces we need to use the recursion, i am not understod the code to wite) 
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2668,6 +2668,72 @@ namespace DSA_practice
             foreach (int item in nums)
             {
                 Console.Write(item+" ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//Leaders in an arry(brute force)
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 2, 1, 5, 4, 4, 3, 0, 0 };
+            int n = nums.Length;
+            List<int> leaders = new List<int>();
+            for (int i = 0; i <n; i++)
+            {
+                bool lead = false;
+                for (int j = i+1; j < n; j++)
+                {
+                    if (nums[j]>nums[i])
+                    {
+                        lead = false;
+                        break;
+                    }
+                }
+                if (lead==true)
+                {
+                    leaders.Add(nums[i]);
+                }
+            }
+            foreach (int item in leaders)
+            {
+                Console.Write(item + " ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+//Leaders in an arry(optimal solution)
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[] nums = { 2, 1, 5, 4, 4, 3, 0, 0 };
+            int n = nums.Length;
+            List<int> leaders = new List<int>();
+            int maxi = nums[n - 1];
+            for (int i = n - 1; i >= 0; i--)
+            {
+                if (nums[i] > maxi)
+                {
+                    
+                    leaders.Add(nums[i]);
+                }
+                maxi = Math.Max(maxi, nums[i]);
+            }
+            leaders.Reverse();
+            foreach (int item in leaders)
+            {
+                Console.Write(item + " ");
             }
             Console.ReadLine();
         }
