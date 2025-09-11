@@ -2710,7 +2710,7 @@ using System.Threading.Tasks;
     }
 }*/
 //Leaders in an arry(optimal solution)
-namespace DSA_practice
+/*namespace DSA_practice
 {
     class Program
     {
@@ -2734,6 +2734,223 @@ namespace DSA_practice
             foreach (int item in leaders)
             {
                 Console.Write(item + " ");
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+//basic matrix for understandin the concept of matrix
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[,] matrix = {
+                { 1,2,3},
+                {1,2,3 },
+                {1,2,3 }
+            };
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+            for (int i = 0; i <rows; i++)
+            {
+                for (int j = 0; j <cols; j++)
+                {
+                    Console.Write(matrix[i,j]+ " ");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+
+/*namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[,] matrix = {
+                { 1,1,1,1},
+                {1,0,1,1},
+                {1,1,0,1},
+                {0,1,1,1}
+            };
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i, j] == 0)
+                    {
+                        //mark column
+                        for (int k = 0; k < n; k++)
+                        {
+                            if (matrix[i, k] != 0)
+                            {
+                                matrix[i, k] = -1;
+                            }
+                        }
+                        //marking rows
+                        for (int k = 0; k < m; k++)
+                        {
+                            if (matrix[k, j] != 0)
+                            {
+                                matrix[k, j] = -1;
+                            }
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i,j]==-1)
+                    {
+                        matrix[i, j] =0;
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write(matrix[i,j]+" ");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
+}*/
+//
+/*
+ namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[,] matrix = {
+                { 1,1,1,1},
+                {1,0,1,1},
+                {1,1,0,1},
+                {0,1,1,1}
+            };
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
+            int[] rows = new int[n];
+            int[] cols = new int[m];
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i,j]==0)
+                    {
+                        rows[i] = 1;
+                        cols[j] = 1;
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (rows[i]==1 || cols[j]==1)
+                    {
+                        matrix[i, j] = 0;
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
+    }
+}
+*/
+
+//
+namespace DSA_practice
+{
+    class Program
+    {
+
+        static void Main()
+        {
+            int[,] matrix = {
+                { 1,1,1,1},
+                {1,0,1,1},
+                {1,1,0,1},
+                {0,1,1,1}
+            };
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
+            int col0 = 1;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i, j] == 0)
+                    {
+                        matrix[i, 0] = 0;
+                        if (j!=0)
+                        {
+                            matrix[0, j] = 0;
+                        }
+                        else
+                        {
+                            col0 = 0;
+                        }
+                        
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i, 0] == 0|| matrix[0, j] == 0)
+                    {
+                        matrix[i, j] = 0;
+                    }
+                }
+            }
+            if (matrix[0,0]==0)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    matrix[0, j] = 0;
+                }
+            }
+            if (col0==0)
+            {
+                for (int i = 0; i < m; i++)
+                {
+                    matrix[i, 0] = 0;
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
             }
             Console.ReadLine();
         }
